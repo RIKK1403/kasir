@@ -9,12 +9,16 @@
 </head>
 
 <body>
-    <h1>kasir</h1>
+    <div class="container text-center">
+        <h1>kasir</h1>
+    </div>
 
-    <div class="list-group">
-        <a href="pelanggan-daftar.php" class="list-group-item list-group-item-action">pelanggan</a>
-        <a href="#" class="list-group-item list-group-item-action">produk</a>
-        <a href="#" class="list-group-item list-group-item-action">pembelian</a>
+    <div class="container-md">
+        <div class="list-group">
+            <a href="pelanggan-daftar.php" class="list-group-item list-group-item-action">pelanggan</a>
+            <a href="#" class="list-group-item list-group-item-action">produk</a>
+            <a href="#" class="list-group-item list-group-item-action">pembelian</a>
+        </div>
     </div>
 </body>
 

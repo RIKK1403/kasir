@@ -35,35 +35,43 @@ $daftarpelanggan = $statement->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <h1>daftar pelanggan</h1>
-    <a href="pelanggan-form-tambah.php">tambah pelanggan</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama pelanggan</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Nomor telepon</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $nomor = 1;
-            foreach ($daftarpelanggan as $pelanggan) {
-            ?>
-                <tr>
-                    <th scope="row"><?php echo $nomor; ?> </th>
-                    <td><?php echo $pelanggan['namapelanggan'] ?></td>
-                    <td><?php echo $pelanggan['alamat'] ?></td>
-                    <td><?php echo $pelanggan['nomortelepon'] ?></td>
-                </tr>
-            <?php
-                $nomor++;
-            }
-            ?>
-        </tbody>
-    </table>
-    <a href="main.php">balik ke main</a>
+    <div class="text-center">
+        <h1>daftar pelanggan</h1>
+    </div>
+    <div class="container-md">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama pelanggan</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Nomor telepon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $nomor = 1;
+                    foreach ($daftarpelanggan as $pelanggan) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $nomor; ?> </th>
+                            <td><?php echo $pelanggan['namapelanggan'] ?></td>
+                            <td><?php echo $pelanggan['alamat'] ?></td>
+                            <td><?php echo $pelanggan['nomortelepon'] ?></td>
+                        </tr>
+                    <?php
+                        $nomor++;
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <div class="container text-center">
+                <a class="btn btn-primary" href="main.php">balik ke main</a>
+                <a class="btn btn-primary" href="pelanggan-form-tambah.php">tambah pelanggan</a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
