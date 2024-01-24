@@ -29,8 +29,8 @@
                     <input name="nomortelepon" type="text" class="form-control" placeholder="Nomor Telepon">
                 </div>
                 <div class="container text-center">
-                    <button type="submit" class="btn btn-primary">simpan</button>
                     <a class="btn btn-primary" href="pelanggan-daftar.php">balik ke daftar</a>
+                    <button type="submit" class="btn btn-primary">simpan</button>
                 </div>
             </form>
         </div>
