@@ -16,7 +16,7 @@
     <div class="container-md">
         <div class="list-group">
             <a href="pelanggan-daftar.php" class="list-group-item list-group-item-action">pelanggan</a>
-            <a href="#" class="list-group-item list-group-item-action">produk</a>
+            <a href="produk-daftar.php" class="list-group-item list-group-item-action">produk</a>
             <a href="#" class="list-group-item list-group-item-action">pembelian</a>
         </div>
     </div>
