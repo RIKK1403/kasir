@@ -1,3 +1,29 @@
+<?php
+
+// 1. buka koneksi
+$host = 'localhost';
+$db = 'kasir';
+$user = 'root';
+$password = '';
+$dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
+try {
+    $pdo = new PDO($dsn, $user, $password);
+
+    if ($pdo) {
+        // echo "Connected to the $db database successfully!";
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+// 2. query data pelanggan
+$sql = 'SELECT * FROM produk';
+$statement = $pdo->query($sql);
+$daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($daftarpelanggan);
+
+// 3. tampilkan
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,25 +49,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Milku</td>
-                    <td>3000</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Mie gelas</td>
-                    <td>2500</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Mie ayam</td>
-                    <td>15000</td>
-                    <td>40</td>
-                </tr>
-            </tbody>
+                    <?php
+                    $nomor = 1;
+                    foreach ($daftarproduk as $produk) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $nomor; ?> </th>
+                            <td><?php echo $produk['namaproduk'] ?></td>
+                            <td><?php echo $produk['harga'] ?></td>
+                            <td><?php echo $produk['stock'] ?></td>
+                        </tr>
+                    <?php
+                        $nomor++;
+                    }
+                    ?>
+                </tbody>
         </table>
         <div class="text-center">
             <a href="main.php" class="btn btn-primary">Balik ke main</a>
