@@ -17,10 +17,10 @@ try {
 
 $namaproduk = $_GET['namaproduk'];
 $harga = $_GET['harga'];
-$stok = $_GET['stok'];
+$stock = $_GET['stock'];
 $produkid = $_GET['produkid'];
 
-$sql = "UPDATE produk SET namaproduk=?, harga=?, stok=? WHERE produkid=?";
+$sql = "UPDATE produk SET namaproduk=?, harga=?, stock=? WHERE produkid=?";
 
 
 $statement = $pdo->prepare($sql);
@@ -29,7 +29,7 @@ try {
     $statement->execute([
         $namaproduk, 
         $harga,
-        $stok,
+        $stock,
         $produkid,
     ]);
 } catch (PDOException $e) {
@@ -50,7 +50,7 @@ try {
         <body>
             <div class="container text-center">
                 <h1 class="mb-4">berhasil edit data</h1>
-                <a class="btn btn-primary" href="pelanggan-daftar.php">balik ke daftar</a>
+                <a class="btn btn-primary" href="produk-daftar.php">balik ke daftar</a>
             </div>
         </body>
 
