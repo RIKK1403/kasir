@@ -46,6 +46,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <th scope="col">Nama Produk</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Stock</th>
+                    <th scope="col">aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +59,10 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $produk['namaproduk'] ?></td>
                             <td><?php echo $produk['harga'] ?></td>
                             <td><?php echo $produk['stock'] ?></td>
+                            <td>
+                                <a href="produk-form-edit.php?produkid=<?php echo $produk['produkid'] ?>">edit</a>
+                                <a class="mx-2" href="produk-hapus.php?produkid=<?php echo $produk['produkid'] ?>">hapus</a>
+                            </td>
                         </tr>
                     <?php
                         $nomor++;
