@@ -47,6 +47,7 @@ $daftarpelanggan = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <th scope="col">Nama pelanggan</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Nomor telepon</th>
+                        <th scope="col">aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,6 +60,10 @@ $daftarpelanggan = $statement->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $pelanggan['namapelanggan'] ?></td>
                             <td><?php echo $pelanggan['alamat'] ?></td>
                             <td><?php echo $pelanggan['nomortelepon'] ?></td>
+                            <td>
+                                <a href="pelanggan-form-edit.php?pelangganid=<?php echo $pelanggan['pelangganid'] ?>">edit</a>
+                                <a class="mx-2" href="pelanggan-hapus.php?pelangganid=<?php echo $pelanggan['pelangganid'] ?>">hapus</a>
+                            </td>
                         </tr>
                     <?php
                         $nomor++;
