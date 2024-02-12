@@ -21,8 +21,9 @@ try {
     echo $e->getMessage();
 }
 
-$sql = "INSERT INTO penjualan (tanggalpenjualan,totalharga,pelangganid) VALUES (?, ?, ?)";
-$statement = $pdo->prepare($sql);
+$sqlpenjualan = "INSERT INTO penjualan (tanggalpenjualan,totalharga,pelangganid) VALUES (?, ?, ?)";
+$sqldetailpenjualan = "INSERT INTO detailpenjualan (penjualanid,produkid,jumlahproduk,subtotal) VALUES (?, ?, ?, ?)";
+$statement = $pdo->prepare($sqlpenjualan);
 
 $statement->execute([
     $tanggalpenjualan, 0, $pelangganid

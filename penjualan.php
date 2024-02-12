@@ -66,22 +66,23 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
             <label for="">tanggal</label>
             <input type="text" name="tanggalpenjualan" id="datepicker" />
             <label for="">total</label>
-            <input type="text" name="totalharga" disabled>
+            <input type="text" name="totalharga" disabled class="form-control">
 
             <h2>produk</h2>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">nama</th>
-                        <th scope="col">jumlah</th>
                         <th scope="col">harga</th>
+                        <th scope="col">jumlah</th>
                         <th scope="col">sub total</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">
-                            <select name="produkid[0]" id="">
+                            <select name="produkid[0]" id="pilihproduk0">
+                                <option value=""> - pilih barang -</option>
                                 <?php
                                 foreach ($daftarproduk as $produk) {
                                 ?>
@@ -91,16 +92,18 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                             </select>
                         </th>
-                        <td><input type="text" name="jumlahproduk[0]"></td>
                         <td>
-                            <p>harga</p>
+                            <p id="harga-0"></p>
                         </td>
+                        <td><input type="number" id="jumlahproduk0" min="1" name="jumlahproduk[0]"></td>
                         <td>
-                            <p>sub total</p>
+                            <p id="subtotal-0"></p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"> <select name="produkid[1]" id="">
+                        <th scope="row"> <select name="produkid[1]" id="pilihproduk1">
+
+                                <option value=""> - pilih barang -</option>
                                 <?php
                                 foreach ($daftarproduk as $produk) {
                                 ?>
@@ -109,16 +112,18 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                                 }
                                 ?>
                             </select></th>
-                        <td><input type="text" name="jumlahproduk[1]"></td>
                         <td>
-                            <p>harga</p>
+                            <p id="harga-1"></p>
                         </td>
+                        <td><input type="number" id="jumlahproduk1" min="1" name="jumlahproduk[1]"></td>
                         <td>
-                            <p>sub total</p>
+                            <p id="subtotal-1"></p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"> <select name="produkid[2]" id="">
+                        <th scope="row"> <select name="produkid[2]" id="pilihproduk2">
+
+                                <option value=""> - pilih barang -</option>
                                 <?php
                                 foreach ($daftarproduk as $produk) {
                                 ?>
@@ -127,27 +132,72 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                                 }
                                 ?>
                             </select></th>
-                        <td><input type="text" name="jumlahproduk[2]"></td>
                         <td>
-                            <p>harga</p>
+                            <p id="harga-2"></p>
                         </td>
+                        <td><input id="jumlahproduk2" type="number" min="1" name="jumlahproduk[2]"></td>
                         <td>
-                            <p>sub total</p>
+                            <p id="subtotal-2"></p>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="text-center">
-            <a href="main.php" class="btn btn-primary">kembali</a>
-            <button type="submit" class="btn btn-primary">simpan</button>
+                <a href="main.php">kembali</a>
+                <button type="submit" class="btn btn-primary">simpan</button>
             </div>
         </form>
     </div>
     <script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap5',
-            format: 'yyyy-mm-dd'
-        });
+        $(document).ready(function() {
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap5',
+                format: 'yyyy-mm-dd'
+            });
+
+            $('#pilihproduk0').change(function() {
+                $.get('ambil-produk.php', {
+                    produkid: $(this).val()
+                }).done(function(data) {
+                    console.log(data);
+                    $('#harga-0').text(data.harga);
+                });
+            })
+
+            $('#pilihproduk1').change(function() {
+                $.get('ambil-produk.php', {
+                    produkid: $(this).val()
+                }).done(function(data) {
+                    console.log(data);
+                    $('#harga-1').text(data.harga);
+                });
+            })
+
+            
+            $('#pilihproduk2').change(function() {
+                $.get('ambil-produk.php', {
+                    produkid: $(this).val()
+                }).done(function(data) {
+                    console.log(data);
+                    $('#harga-2').text(data.harga);
+                });
+            })
+
+            $('#jumlahproduk0').change(function() {
+                let harga = $('#harga-0').text();
+                $('#subtotal-0').text(harga * $(this).val());
+            });
+
+            $('#jumlahproduk1').change(function() {
+                let harga = $('#harga-1').text();
+                $('#subtotal-1').text(harga * $(this).val());
+            });
+
+            $('#jumlahproduk2').change(function() {
+                let harga = $('#harga-2').text();
+                $('#subtotal-2').text(harga * $(this).val());
+            });
+        })
     </script>
 </body>
 
