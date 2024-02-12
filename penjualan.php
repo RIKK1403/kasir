@@ -66,7 +66,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
             <label for="">tanggal</label>
             <input type="text" name="tanggalpenjualan" id="datepicker" />
             <label for="">total</label>
-            <input type="text" name="totalharga" disabled class="form-control">
+            <input type="text" name="totalharga" id="total" disabled class="form-control">
 
             <h2>produk</h2>
             <table class="table">
@@ -81,7 +81,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
                     <tr>
                         <th scope="row">
-                            <select name="produkid[0]" id="pilihproduk0">
+                            <select name="produkid-0" id="pilihproduk0">
                                 <option value=""> - pilih barang -</option>
                                 <?php
                                 foreach ($daftarproduk as $produk) {
@@ -95,13 +95,13 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <p id="harga-0"></p>
                         </td>
-                        <td><input type="number" id="jumlahproduk0" min="1" name="jumlahproduk[0]"></td>
+                        <td><input type="number" id="jumlahproduk0" min="1" name="jumlahproduk-0"></td>
                         <td>
                             <p id="subtotal-0"></p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"> <select name="produkid[1]" id="pilihproduk1">
+                        <th scope="row"> <select name="produkid-1" id="pilihproduk1">
 
                                 <option value=""> - pilih barang -</option>
                                 <?php
@@ -115,13 +115,13 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <p id="harga-1"></p>
                         </td>
-                        <td><input type="number" id="jumlahproduk1" min="1" name="jumlahproduk[1]"></td>
+                        <td><input type="number" id="jumlahproduk1" min="1" name="jumlahproduk-1"></td>
                         <td>
                             <p id="subtotal-1"></p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"> <select name="produkid[2]" id="pilihproduk2">
+                        <th scope="row"> <select name="produkid-2" id="pilihproduk2">
 
                                 <option value=""> - pilih barang -</option>
                                 <?php
@@ -135,7 +135,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <p id="harga-2"></p>
                         </td>
-                        <td><input id="jumlahproduk2" type="number" min="1" name="jumlahproduk[2]"></td>
+                        <td><input id="jumlahproduk2" type="number" min="1" name="jumlahproduk-2"></td>
                         <td>
                             <p id="subtotal-2"></p>
                         </td>
@@ -155,12 +155,22 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                 format: 'yyyy-mm-dd'
             });
 
+            function jumlahTotal() {
+                let totalharga = 0;
+                totalharga = (parseInt($('#subtotal-0').text()) || 0) +
+                    (parseInt($('#subtotal-1').text()) || 0) +
+                    (parseInt($('#subtotal-2').text()) || 0);
+                $('#total').val(parseInt(totalharga));
+            }
+
             $('#pilihproduk0').change(function() {
                 $.get('ambil-produk.php', {
                     produkid: $(this).val()
                 }).done(function(data) {
-                    console.log(data);
                     $('#harga-0').text(data.harga);
+                    let harga = $('#harga-0').text();
+                    $('#subtotal-0').text(harga * $('#jumlahproduk0').val());
+                    jumlahTotal();
                 });
             })
 
@@ -168,34 +178,41 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $.get('ambil-produk.php', {
                     produkid: $(this).val()
                 }).done(function(data) {
-                    console.log(data);
                     $('#harga-1').text(data.harga);
+                    let harga = $('#harga-0').text();
+                    $('#subtotal-0').text(harga * $('#jumlahproduk0').val());
+                    jumlahTotal();
                 });
             })
 
-            
+
             $('#pilihproduk2').change(function() {
                 $.get('ambil-produk.php', {
                     produkid: $(this).val()
                 }).done(function(data) {
-                    console.log(data);
                     $('#harga-2').text(data.harga);
+                    let harga = $('#harga-0').text();
+                    $('#subtotal-0').text(harga * $('#jumlahproduk0').val());
+                    jumlahTotal();
                 });
             })
 
             $('#jumlahproduk0').change(function() {
                 let harga = $('#harga-0').text();
                 $('#subtotal-0').text(harga * $(this).val());
+                jumlahTotal();
             });
 
             $('#jumlahproduk1').change(function() {
                 let harga = $('#harga-1').text();
                 $('#subtotal-1').text(harga * $(this).val());
+                jumlahTotal();
             });
 
             $('#jumlahproduk2').change(function() {
                 let harga = $('#harga-2').text();
                 $('#subtotal-2').text(harga * $(this).val());
+                jumlahTotal();
             });
         })
     </script>
