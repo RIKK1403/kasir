@@ -1,10 +1,4 @@
-<?php 
-
-$tanggalpenjualan = $_POST['tanggalpenjualan'];
-$pelangganid = $_POST['pelangganid'];
-$produkid = $_POST['produkid'];
-$jumlahproduk = $_POST['jumlahproduk'];
-
+<?php
 
 $host = 'localhost';
 $db = 'kasir';
@@ -21,13 +15,53 @@ try {
     echo $e->getMessage();
 }
 
+$pelangganid = $_GET['pelangganid'];
+$tanggalpenjualan = $_GET['tanggalpenjualan'];
+$total = $_GET['totalharga'];
+$produkid0 = $_GET['produkid-0'];
+$jumlahproduk0 = $_GET['jumlahproduk-0'];
+$subtotal0 = $_GET['subtotal-0'];
+$produkid1 = $_GET['produkid-1'];
+$jumlahproduk1 = $_GET['jumlahproduk-1'];
+$subtotal1 = $_GET['subtotal-1'];
+$produkid2 = $_GET['produkid-2'];
+$jumlahproduk2 = $_GET['jumlahproduk-2'];
+$subtotal2 = $_GET['subtotal-2'];
+
+
 $sqlpenjualan = "INSERT INTO penjualan (tanggalpenjualan,totalharga,pelangganid) VALUES (?, ?, ?)";
-$sqldetailpenjualan = "INSERT INTO detailpenjualan (penjualanid,produkid,jumlahproduk,subtotal) VALUES (?, ?, ?, ?)";
 $statement = $pdo->prepare($sqlpenjualan);
 
-$statement->execute([
-    $tanggalpenjualan, 0, $pelangganid
-]);
+try {
+    $statement->execute([
+        $tanggalpenjualan, $total, $pelangganid
+    ]);
+
+    $penjualanid = $pdo->lastInsertId();
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+
+$sqldetailpenjualan = "INSERT INTO detailpenjualan (penjualanid,produkid,jumlahproduk,subtotal) VALUES (?, ?, ?, ?)";
+
+$statement = $pdo->prepare($sqldetailpenjualan);
+
+try {
+    $statement->execute([
+        $penjualanid, $produkid0, $jumlahproduk0, $subtotal0
+    ]);
+
+    $statement->execute([
+        $penjualanid, $produkid1, $jumlahproduk1, $subtotal1
+    ]);
+
+    $statement->execute([
+        $penjualanid, $produkid2, $jumlahproduk2, $subtotal2
+    ]);
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>

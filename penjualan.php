@@ -50,7 +50,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
         <h1>Penjualan</h1>
     </div>
     <div class="container">
-        <form action="penjualan-simpan.php" method="post">
+        <form action="penjualan-simpan.php" method="get">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">pelanggan</label>
                 <select name="pelangganid" class="form-select" aria-label="Default select example">
@@ -66,7 +66,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
             <label for="">tanggal</label>
             <input type="text" name="tanggalpenjualan" id="datepicker" />
             <label for="">total</label>
-            <input type="text" name="totalharga" id="total" disabled class="form-control">
+            <input type="text" name="totalharga" id="total" readonly class="form-control">
 
             <h2>produk</h2>
             <table class="table">
@@ -97,7 +97,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         </td>
                         <td><input type="number" id="jumlahproduk0" min="1" name="jumlahproduk-0"></td>
                         <td>
-                            <p id="subtotal-0"></p>
+                            <input type="text" id="subtotal-0" name="subtotal-0" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -117,7 +117,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         </td>
                         <td><input type="number" id="jumlahproduk1" min="1" name="jumlahproduk-1"></td>
                         <td>
-                            <p id="subtotal-1"></p>
+                        <input type="text" id="subtotal-1" name="subtotal-1" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -137,7 +137,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         </td>
                         <td><input id="jumlahproduk2" type="number" min="1" name="jumlahproduk-2"></td>
                         <td>
-                            <p id="subtotal-2"></p>
+                        <input type="text" id="subtotal-2" name="subtotal-2" readonly>
                         </td>
                     </tr>
                 </tbody>
@@ -157,9 +157,9 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
 
             function jumlahTotal() {
                 let totalharga = 0;
-                totalharga = (parseInt($('#subtotal-0').text()) || 0) +
-                    (parseInt($('#subtotal-1').text()) || 0) +
-                    (parseInt($('#subtotal-2').text()) || 0);
+                totalharga = (parseInt($('#subtotal-0').val()) || 0) +
+                    (parseInt($('#subtotal-1').val()) || 0) +
+                    (parseInt($('#subtotal-2').val()) || 0);
                 $('#total').val(parseInt(totalharga));
             }
 
@@ -169,7 +169,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                 }).done(function(data) {
                     $('#harga-0').text(data.harga);
                     let harga = $('#harga-0').text();
-                    $('#subtotal-0').text(harga * $('#jumlahproduk0').val());
+                    $('#subtotal-0').val(harga * $('#jumlahproduk0').val());
                     jumlahTotal();
                 });
             })
@@ -179,8 +179,8 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                     produkid: $(this).val()
                 }).done(function(data) {
                     $('#harga-1').text(data.harga);
-                    let harga = $('#harga-0').text();
-                    $('#subtotal-0').text(harga * $('#jumlahproduk0').val());
+                    let harga = $('#harga-1').text();
+                    $('#subtotal-1').val(harga * $('#jumlahproduk1').val());
                     jumlahTotal();
                 });
             })
@@ -191,27 +191,27 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                     produkid: $(this).val()
                 }).done(function(data) {
                     $('#harga-2').text(data.harga);
-                    let harga = $('#harga-0').text();
-                    $('#subtotal-0').text(harga * $('#jumlahproduk0').val());
+                    let harga = $('#harga-2').text();
+                    $('#subtotal-2').val(harga * $('#jumlahproduk2').val());
                     jumlahTotal();
                 });
             })
 
             $('#jumlahproduk0').change(function() {
                 let harga = $('#harga-0').text();
-                $('#subtotal-0').text(harga * $(this).val());
+                $('#subtotal-0').val(harga * $(this).val());
                 jumlahTotal();
             });
 
             $('#jumlahproduk1').change(function() {
                 let harga = $('#harga-1').text();
-                $('#subtotal-1').text(harga * $(this).val());
+                $('#subtotal-1').val(harga * $(this).val());
                 jumlahTotal();
             });
 
             $('#jumlahproduk2').change(function() {
                 let harga = $('#harga-2').text();
-                $('#subtotal-2').text(harga * $(this).val());
+                $('#subtotal-2').val(harga * $(this).val());
                 jumlahTotal();
             });
         })
