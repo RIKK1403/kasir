@@ -48,17 +48,24 @@ $sqldetailpenjualan = "INSERT INTO detailpenjualan (penjualanid,produkid,jumlahp
 $statement = $pdo->prepare($sqldetailpenjualan);
 
 try {
-    $statement->execute([
-        $penjualanid, $produkid0, $jumlahproduk0, $subtotal0
-    ]);
+    if($jumlahproduk0 > 0){
+        $statement->execute([
+            $penjualanid, $produkid0, $jumlahproduk0, $subtotal0
+        ]);
+    }
+   
 
-    $statement->execute([
-        $penjualanid, $produkid1, $jumlahproduk1, $subtotal1
-    ]);
+    if ($jumlahproduk1 > 0) {
+        $statement->execute([
+            $penjualanid, $produkid1, $jumlahproduk1, $subtotal1
+        ]);
+    }
 
-    $statement->execute([
-        $penjualanid, $produkid2, $jumlahproduk2, $subtotal2
-    ]);
+    if ($jumlahproduk2 > 0) {
+        $statement->execute([
+            $penjualanid, $produkid2, $jumlahproduk2, $subtotal2
+        ]);
+    }
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
@@ -77,7 +84,7 @@ try {
 <body>
     <div class="container text-center">
         <h1>pembelian berhasil</h1>
-        <a class="btn btn-primary" href="penjualan.php">balik ke daftar</a>
+        <a class="btn btn-primary" href="detailpenjualan-daftar.php">lihat ke daftar</a>
     </div>
 </body>
 

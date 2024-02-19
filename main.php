@@ -18,6 +18,7 @@
             <a href="pelanggan-daftar.php" class="list-group-item list-group-item-action">pelanggan</a>
             <a href="produk-daftar.php" class="list-group-item list-group-item-action">produk</a>
             <a href="penjualan.php" class="list-group-item list-group-item-action">pembelian</a>
+            <a href="detailpenjualan-daftar.php" class="list-group-item list-group-item-action">detail penjualan</a>
         </div>
     </div>
 </body>
