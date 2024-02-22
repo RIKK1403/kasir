@@ -101,7 +101,7 @@ $penjualan = $statement->fetchAll(PDO::FETCH_ASSOC);
             <div class="container text-center">
                 <p>omset
                 <?php 
-                echo $omset;
+                echo number_format($omset);
                 ?>
                 <a style="margin-left: 50px;" class="btn btn-primary" href="penjualan.php">balik ke pembelian</a>
                 </p>

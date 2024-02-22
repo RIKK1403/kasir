@@ -117,13 +117,13 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         </td>
                         <td><input class="form-control" type="number" id="jumlahproduk1" min="1" name="jumlahproduk-1"></td>
                         <td>
-                        <input class="form-control" type="text" id="subtotal-1" name="subtotal-1" readonly>
+                            <input class="form-control" type="text" id="subtotal-1" name="subtotal-1" readonly>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"> <select class="form-select" name="produkid-2" id="pilihproduk2">
 
-                                <option value="" > - pilih barang -</option>
+                                <option value=""> - pilih barang -</option>
                                 <?php
                                 foreach ($daftarproduk as $produk) {
                                 ?>
@@ -137,7 +137,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         </td>
                         <td><input class="form-control" id="jumlahproduk2" type="number" min="1" name="jumlahproduk-2"></td>
                         <td>
-                        <input class="form-control" type="text" id="subtotal-2" name="subtotal-2" readonly>
+                            <input class="form-control" type="text" id="subtotal-2" name="subtotal-2" readonly>
                         </td>
                     </tr>
                 </tbody>
@@ -202,18 +202,36 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $('#subtotal-0').val(harga * $(this).val());
                 jumlahTotal();
             });
+            $('#jumlahproduk0').on('keyup', function() {
+                let harga = $('#harga-0').text();
+                $('#subtotal-0').val(harga * $(this).val());
+                jumlahTotal();
+            });
+
 
             $('#jumlahproduk1').change(function() {
                 let harga = $('#harga-1').text();
                 $('#subtotal-1').val(harga * $(this).val());
                 jumlahTotal();
             });
+            $('#jumlahproduk1').on('keyup', function() {
+                let harga = $('#harga-1').text();
+                $('#subtotal-1').val(harga * $(this).val());
+                jumlahTotal();
+            });
+
 
             $('#jumlahproduk2').change(function() {
                 let harga = $('#harga-2').text();
                 $('#subtotal-2').val(harga * $(this).val());
                 jumlahTotal();
             });
+            $('#jumlahproduk2').on('keyup', function() {
+                let harga = $('#harga-2').text();
+                $('#subtotal-2').val(harga * $(this).val());
+                jumlahTotal();
+            });
+
         })
     </script>
 </body>
