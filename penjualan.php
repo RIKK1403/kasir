@@ -81,7 +81,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
                     <tr>
                         <th scope="row">
-                            <select name="produkid-0" id="pilihproduk0">
+                            <select class="form-select" name="produkid-0" id="pilihproduk0">
                                 <option value=""> - pilih barang -</option>
                                 <?php
                                 foreach ($daftarproduk as $produk) {
@@ -95,13 +95,13 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <p id="harga-0"></p>
                         </td>
-                        <td><input type="number" id="jumlahproduk0" min="1" name="jumlahproduk-0"></td>
+                        <td><input class="form-control" type="number" id="jumlahproduk0" min="1" name="jumlahproduk-0"></td>
                         <td>
-                            <input type="text" id="subtotal-0" name="subtotal-0" readonly>
+                            <input class="form-control" type="text" id="subtotal-0" name="subtotal-0" readonly>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"> <select name="produkid-1" id="pilihproduk1">
+                        <th scope="row"> <select class="form-select" name="produkid-1" id="pilihproduk1">
 
                                 <option value=""> - pilih barang -</option>
                                 <?php
@@ -115,15 +115,15 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <p id="harga-1"></p>
                         </td>
-                        <td><input type="number" id="jumlahproduk1" min="1" name="jumlahproduk-1"></td>
+                        <td><input class="form-control" type="number" id="jumlahproduk1" min="1" name="jumlahproduk-1"></td>
                         <td>
-                        <input type="text" id="subtotal-1" name="subtotal-1" readonly>
+                        <input class="form-control" type="text" id="subtotal-1" name="subtotal-1" readonly>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"> <select name="produkid-2" id="pilihproduk2">
+                        <th scope="row"> <select class="form-select" name="produkid-2" id="pilihproduk2">
 
-                                <option value=""> - pilih barang -</option>
+                                <option value="" > - pilih barang -</option>
                                 <?php
                                 foreach ($daftarproduk as $produk) {
                                 ?>
@@ -135,16 +135,16 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <td>
                             <p id="harga-2"></p>
                         </td>
-                        <td><input id="jumlahproduk2" type="number" min="1" name="jumlahproduk-2"></td>
+                        <td><input class="form-control" id="jumlahproduk2" type="number" min="1" name="jumlahproduk-2"></td>
                         <td>
-                        <input type="text" id="subtotal-2" name="subtotal-2" readonly>
+                        <input class="form-control" type="text" id="subtotal-2" name="subtotal-2" readonly>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="text-center">
                 <a href="main.php">kembali</a>
-                <button type="submit" class="btn btn-primary">simpan</button>
+                <button style="margin-left: 50px;" type="submit" class="btn btn-primary">simpan</button>
             </div>
         </form>
     </div>

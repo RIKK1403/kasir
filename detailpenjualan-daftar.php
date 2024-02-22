@@ -99,10 +99,12 @@ $penjualan = $statement->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
             <div class="container text-center">
+                <p>omset
                 <?php 
                 echo $omset;
                 ?>
-                <a class="btn btn-primary" href="main.php">balik ke main</a>
+                <a style="margin-left: 50px;" class="btn btn-primary" href="penjualan.php">balik ke pembelian</a>
+                </p>
             </div>
         </div>
     </div>
