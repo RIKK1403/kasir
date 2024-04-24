@@ -43,6 +43,7 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <title>Penjualan</title>
+    <link rel='icon' href='logo.jpg'>
 </head>
 
 <body>
@@ -143,8 +144,8 @@ $daftarproduk = $statement->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
             <div class="text-center">
-                <a href="main.php">kembali</a>
-                <button style="margin-left: 50px;" type="submit" class="btn btn-primary">simpan</button>
+                <a class="btn btn-success" href="main.php">kembali</a>
+                <button style="margin-left: 50px;" type="submit" class="btn btn-success">Bayar</button>
             </div>
         </form>
     </div>

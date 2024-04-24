@@ -40,6 +40,7 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="pelanggan.css">
     <title>edit pelanggan</title>
+    <link rel='icon' href='logo.jpg'>
 </head>
 
 <body>
@@ -63,8 +64,8 @@ try {
                 </div>
                 <div class="container text-center">
                     <input type="hidden" name="pelangganid" value="<?php echo $pelanggan['pelangganid'] ?>">
-                    <a class="btn btn-primary" href="pelanggan-daftar.php">balik ke daftar</a>
-                    <button type="submit" class="btn btn-primary">simpan</button>
+                    <a class="btn btn-success" href="pelanggan-daftar.php">balik ke daftar</a>
+                    <button type="submit" class="btn btn-success">simpan</button>
                 </div>
             </form>
         </div>

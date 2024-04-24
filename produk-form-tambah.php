@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="pelanggan.css">
     <title>tambah produk</title>
+    <link rel='icon' href='logo.jpg'>
 </head>
 
 <body>
@@ -29,8 +30,8 @@
                     <input name="stock" type="text" class="form-control" placeholder="stock">
                 </div>
                 <div class="container text-center">
-                    <a class="btn btn-primary" href="produk-daftar.php">balik ke daftar</a>
-                    <button type="submit" class="btn btn-primary">simpan</button>
+                    <a class="btn btn-success" href="produk-daftar.php">balik ke daftar</a>
+                    <button type="submit" class="btn btn-success">simpan</button>
                 </div>
             </form>
         </div>

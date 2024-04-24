@@ -40,6 +40,7 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="pelanggan.css">
     <title>edit pelanggan</title>
+    <link rel='icon' href='logo.jpg'>
 </head>
 
 <body>
@@ -50,21 +51,21 @@ try {
         <div class="formisi">
             <form action="produk-edit.php">
                 <div>
-                    <label class="form-label">Nama</label>
-                    <input name="namaproduk" value="<?php echo $produk['namaproduk'] ?>" type="text" class="form-control" placeholder="Nama">
+                    <label class="form-label">Nama produk</label>
+                    <input name="namaproduk" value="<?php echo $produk['namaproduk'] ?>" type="text" class="form-control" placeholder="Nama produk">
                 </div>
                 <div>
-                    <label class="form-label">Alamat</label>
-                    <textarea name="harga" class="form-control" rows="2" placeholder="Alamat"><?php echo $produk['harga'] ?></textarea>
+                    <label class="form-label">Harga</label>
+                    <textarea name="harga" class="form-control" rows="2" placeholder="harga"><?php echo $produk['harga'] ?></textarea>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Nomor telepon</label>
-                    <input name="stock" value="<?php echo $produk['stock'] ?>" type="text" class="form-control" placeholder="Nomor Telepon">
+                    <label class="form-label">Stock produk</label>
+                    <input name="stock" value="<?php echo $produk['stock'] ?>" type="text" class="form-control" placeholder="stock toko">
                 </div>
                 <div class="container text-center">
                     <input type="hidden" name="produkid" value="<?php echo $produk['produkid'] ?>">
-                    <a class="btn btn-primary" href="produk-daftar.php">balik ke daftar</a>
-                    <button type="submit" class="btn btn-primary">simpan</button>
+                    <a class="btn btn-success" href="produk-daftar.php">balik ke daftar</a>
+                    <button type="submit" class="btn btn-success">simpan</button>
                 </div>
             </form>
         </div>
